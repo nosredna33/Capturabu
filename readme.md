@@ -1,6 +1,6 @@
-# QR Text Capture
+# Captura B.U. 
 
-O **QR Text Capture** é uma aplicação web genérica para ler o texto de QR Codes presentes nas portas das seções eleitorais a partir de imagens de fotos dos QR-Codes e manter um histórico por usuário. O projeto não possui regras de negócio específicas de eleições ou de qualquer outro domínio.
+O **Captura B.U.** é uma aplicação web genérica para ler o texto de QR Codes presentes nas portas das seções eleitorais a partir de imagens de fotos dos QR-Codes e manter um histórico por usuário. O projeto não possui regras de negócio específicas de eleições ou de qualquer outro domínio.
 
 O fluxo de leitura é manual e controlado pelo usuário: selecionar imagem, selecionar região no Canvas 1, cortar, conferir o Canvas 2, ler o QR Code, conferir o texto e salvar no banco.
 
@@ -75,14 +75,14 @@ Se estiver usando um arquivo ZIP, extraia-o para um diretório de trabalho. Se e
 
 ```bash
 git clone <URL_DO_REPOSITORIO>
-cd qr-text-capture
+cd Capturabu
 ```
 
 No PowerShell:
 
 ```powershell
 git clone <URL_DO_REPOSITORIO>
-Set-Location qr-text-capture
+Set-Location Capturabu
 ```
 
 ## Compilar e testar
@@ -110,7 +110,7 @@ mvn spring-boot:run
 ```bash
 export APP_TEST_USER_ENABLED=true
 export SERVER_PORT=8080
-java -jar target/qr-text-capture-0.0.1-SNAPSHOT.jar
+java -jar target/Capturabu-0.0.1-SNAPSHOT.jar
 ```
 
 ### Execução em uma linha
@@ -136,7 +136,7 @@ mvn spring-boot:run
 ```powershell
 $env:APP_TEST_USER_ENABLED = "true"
 $env:SERVER_PORT = "8080"
-java -jar target\qr-text-capture-0.0.1-SNAPSHOT.jar
+java -jar target\Capturabu-0.0.1-SNAPSHOT.jar
 ```
 
 Acesse `http://localhost:8080`.
@@ -183,32 +183,32 @@ mvn spring-boot:run
 Por padrão, o arquivo é criado em:
 
 ```text
-./data/qr-text-capture.db
+./data/Capturabu.db
 ```
 
 Para usar outro caminho no Linux:
 
 ```bash
-export DB_FILE=/caminho/para/qr-text-capture.db
+export DB_FILE=/caminho/para/Capturabu.db
 ```
 
 No PowerShell:
 
 ```powershell
-$env:DB_FILE = "C:\dados\qr-text-capture.db"
+$env:DB_FILE = "C:\dados\Capturabu.db"
 ```
 
 Se o SQLite CLI estiver instalado, consulte os dados:
 
 ```bash
-sqlite3 ./data/qr-text-capture.db "select id,name,email,role,enabled from users;"
-sqlite3 ./data/qr-text-capture.db "select id,user_id,content,source_name,created_at from qr_captures order by id desc;"
+sqlite3 ./data/Capturabu.db "select id,name,email,role,enabled from users;"
+sqlite3 ./data/Capturabu.db "select id,user_id,content,source_name,created_at from qr_captures order by id desc;"
 ```
 
 No Windows, os mesmos comandos funcionam quando `sqlite3.exe` estiver no `Path`:
 
 ```powershell
-sqlite3 .\data\qr-text-capture.db "select id,name,email,role,enabled from users;"
+sqlite3 .\data\Capturabu.db "select id,name,email,role,enabled from users;"
 ```
 
 ## Primeiro administrador
@@ -218,13 +218,13 @@ O primeiro cadastro recebe o papel `USER`. Depois de confirmar a conta, promova-
 Linux:
 
 ```bash
-sqlite3 ./data/qr-text-capture.db "update users set role='ADMIN' where email='seu@email';"
+sqlite3 ./data/Capturabu.db "update users set role='ADMIN' where email='seu@email';"
 ```
 
 Windows PowerShell:
 
 ```powershell
-sqlite3 .\data\qr-text-capture.db "update users set role='ADMIN' where email='seu@email';"
+sqlite3 .\data\Capturabu.db "update users set role='ADMIN' where email='seu@email';"
 ```
 
 Depois de promover o usuário, faça novo login. O CRUD administrativo estará disponível em `/usuarios`.
@@ -240,7 +240,7 @@ O cadastro exige confirmação. Em ambiente local sem SMTP configurado, o link d
 | `MAIL_USERNAME` | `usuario` | Usuário SMTP |
 | `MAIL_PASSWORD` | `senha` | Senha SMTP |
 | `MAIL_FROM` | `no-reply@example.com` | Remetente |
-| `APP_BASE_URL` | `https://app.example.com` | URL dos links |
+| `APP_BASE_URL` | `https://votabr.com.br` | URL dos links |
 
 Linux:
 
@@ -250,7 +250,7 @@ export MAIL_PORT=587
 export MAIL_USERNAME=usuario
 export MAIL_PASSWORD='senha'
 export MAIL_FROM=no-reply@example.com
-export APP_BASE_URL=https://app.example.com
+export APP_BASE_URL=https://votabr.com.br
 mvn spring-boot:run
 ```
 
@@ -262,7 +262,7 @@ $env:MAIL_PORT = "587"
 $env:MAIL_USERNAME = "usuario"
 $env:MAIL_PASSWORD = "senha"
 $env:MAIL_FROM = "no-reply@example.com"
-$env:APP_BASE_URL = "https://app.example.com"
+$env:APP_BASE_URL = "https://votabr.com.br"
 mvn spring-boot:run
 ```
 
