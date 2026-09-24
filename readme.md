@@ -360,7 +360,7 @@ Defina a licença antes de publicar o projeto em um repositório. O código dest
 
 ## Documentos complementares
 
-- [Especificação técnica completa](ESPECIFICACAO.md)
+- [Especificação técnica completa]([ESPECIFICACAO.md](https://github.com/nosredna33/capturabu/blob/main/docs/ESPECIFICACAO.md))
 - [Prompt para reprodução por outra IA](PROMPT-REPRODUCAO.md)
 
 ## Referências
