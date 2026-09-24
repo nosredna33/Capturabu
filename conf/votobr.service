@@ -1,0 +1,23 @@
+# Para usar o restar automático
+# Copiar para:
+# cp /var/www/votobr.com.br/conf/votobr.service \
+#    /etc/systemd/system/votobr.service
+[Unit]
+Description=Voto BR - Captura B.U.
+After=syslog.target network.target
+
+[Service]
+# Executa de dentro da pasta para o Spring Boot achar o application.properties externo
+WorkingDirectory=/var/www/votobr.com.br
+ExecStart=/usr/bin/java  -Dspring.config.location=file:/var/www/votobr.com.br/conf/application.properties -jar /var/www/votobr.com.br/dist/capturabu.jar
+SuccessExitStatus=143
+Restart=always
+RestartSec=10
+
+# Redireciona os logs automaticamente para o sistema do Linux
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=CapturaBU
+
+[Install]
+WantedBy=multi-user.target
